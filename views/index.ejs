@@ -1,0 +1,62 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>
+    	 <%= title %>
+    </title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/foundation.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+  <body>
+    <div class="overlay"><div id="preloader"></div></div>
+         <a  id="nav-toggle"><span></span></a>
+<div class="menu-hang">
+<ul class="menu vertical">
+  <li><b>All Projects</b></li>
+  <% for(var i=0; i < projectData.length; i++) { %>
+<li><a href="#project-<%-projectData[i].id%>"><%-projectData[i].name%></a></li>
+<% } %>
+</ul>
+
+</div>
+<header>
+<div class="grid-x grid-container">
+<div class="cell">
+<h1> <%= title %></h1>
+</div>
+</div>
+</header>
+<div class="gird-x grid-container ">
+<div class="cell">
+<div class="main-content">
+<% for(var i=0; i < projectData.length; i++) { %>
+<div class="project-card" id="project-<%= projectData[i].id%>">
+<div class="grid-x grid-padding-x">
+<div class="cell medium-4">
+<img src="<%-projectData[i].image_url%>">
+</div>
+<div class="cell medium-8">
+  <img src="<%-ownerData[i].url%>" class="img-thumb">
+<h3><%-projectData[i].name%></h3>
+<h5>By 
+  <a href="<%-ownerData[i].url%>" class="profile-url" target="blank"><span class="owner-name my-tooltip" id="<%= projectData[i].id%>"><%- ownerData[i].screen_name%>
+  <span class="tooltiptext" id="tool-tip-<%= projectData[i].id%>"></span></span></a></h5>
+  <hr class="teal">
+<div class="description"><p><%-projectData[i].description%></p></div>
+</div>
+</div>
+</div>
+<% } %>
+</div>
+</div>
+</div>
+<script src="/javascripts/myApp.js"></script>
+</body>
+</html>
+
+  
